@@ -3,11 +3,60 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
+import { Download } from 'lucide-react';
+import { useToast } from "@/hooks/use-toast";
 
 const Resume = () => {
+  const { toast } = useToast();
+  
+  const handleDownload = () => {
+    // Create a printable version of the resume
+    const printContent = document.getElementById('resume-content');
+    
+    if (printContent) {
+      // Create a new window for printing
+      const printWindow = window.open('', '_blank');
+      if (printWindow) {
+        printWindow.document.write(`
+          <html>
+            <head>
+              <title>Saurabh Tenpe - Resume</title>
+              <style>
+                body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; }
+                h1 { font-size: 24px; margin-bottom: 5px; }
+                h2 { font-size: 18px; margin-top: 15px; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+                h3 { font-size: 16px; margin-bottom: 5px; }
+                p, ul { margin: 5px 0; }
+                ul { padding-left: 20px; }
+                .contact-info { margin-bottom: 15px; }
+                .section { margin-bottom: 20px; }
+              </style>
+            </head>
+            <body>
+              ${printContent.innerHTML}
+            </body>
+          </html>
+        `);
+        
+        printWindow.document.close();
+        printWindow.focus();
+        
+        // Print the document
+        setTimeout(() => {
+          printWindow.print();
+        }, 250);
+
+        toast({
+          title: "Download initiated",
+          description: "Your resume is ready to download as PDF"
+        });
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg">
+      <div id="resume-content" className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg">
         {/* Header Section */}
         <div className="p-8 border-b">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Saurabh Tenpe</h1>
@@ -89,6 +138,8 @@ const Resume = () => {
         {/* Projects */}
         <div className="p-8 border-b">
           <h2 className="text-xl font-bold text-gray-900 mb-4">PROFESSIONAL DEVELOPMENT</h2>
+          
+          {/* E-Commerce Project */}
           <div className="mb-6">
             <div className="flex justify-between items-start mb-2">
               <h3 className="font-semibold text-gray-900">E-Commerce Microservices Application</h3>
@@ -98,6 +149,50 @@ const Resume = () => {
               <li>Designed and developed a full-stack e-commerce application using microservices architecture</li>
               <li>Implemented user authentication, product catalog, and order processing services with Spring Boot</li>
               <li>Created responsive frontend with React.js and integrated payment gateway APIs</li>
+              <li>Deployed application using Docker containers, reducing deployment time by 40%</li>
+            </ul>
+          </div>
+          
+          {/* Enterprise CMS */}
+          <div className="mb-6">
+            <div className="flex justify-between items-start mb-2">
+              <h3 className="font-semibold text-gray-900">Enterprise Content Management System</h3>
+              <p className="text-gray-600">07/2023 - 11/2023</p>
+            </div>
+            <ul className="list-disc pl-5 space-y-2 text-gray-600">
+              <li>Architected and developed a full-stack content management system using React.js frontend and Spring Boot backend</li>
+              <li>Implemented RESTful API architecture for seamless communication between frontend and backend components</li>
+              <li>Created dynamic content creation, editing, and publishing workflows with role-based permissions</li>
+              <li>Designed responsive UI components using React and Material UI for optimal user experience across devices</li>
+              <li>Integrated secure authentication and authorization using Spring Security and JWT</li>
+            </ul>
+          </div>
+          
+          {/* Blog Management System */}
+          <div className="mb-6">
+            <div className="flex justify-between items-start mb-2">
+              <h3 className="font-semibold text-gray-900">Blog Management System</h3>
+              <p className="text-gray-600">03/2022 - 06/2022</p>
+            </div>
+            <ul className="list-disc pl-5 space-y-2 text-gray-600">
+              <li>Architected and implemented a full-stack blogging platform utilizing Spring MVC, JSP, Hibernate, and MySQL</li>
+              <li>Designed and implemented RESTful APIs for seamless frontend-backend integration</li>
+              <li>Built secure user authentication and role-based access control system</li>
+              <li>Enhanced platform performance through optimized database queries and efficient caching mechanisms</li>
+            </ul>
+          </div>
+          
+          {/* Myers-Briggs System */}
+          <div className="mb-6">
+            <div className="flex justify-between items-start mb-2">
+              <h3 className="font-semibold text-gray-900">Myers-Briggs Personality Prediction System</h3>
+              <p className="text-gray-600">09/2021 - 12/2021</p>
+            </div>
+            <ul className="list-disc pl-5 space-y-2 text-gray-600">
+              <li>Engineered ML-based system to analyze text input and predict Myers-Briggs personality types</li>
+              <li>Designed interactive user interface for intuitive data collection and result visualization</li>
+              <li>Implemented data processing pipeline for text analysis and feature extraction</li>
+              <li>Created personalized reporting functionality with actionable insights based on personality types</li>
             </ul>
           </div>
         </div>
@@ -114,7 +209,11 @@ const Resume = () => {
 
         {/* Download Button */}
         <div className="p-8 bg-gray-50 rounded-b-lg">
-          <Button className="w-full bg-blue-600 hover:bg-blue-700">
+          <Button 
+            onClick={handleDownload} 
+            className="w-full bg-blue-600 hover:bg-blue-700 flex items-center justify-center"
+          >
+            <Download className="mr-2" size={18} />
             Download Resume
           </Button>
         </div>
