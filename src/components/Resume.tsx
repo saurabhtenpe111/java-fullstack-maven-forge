@@ -123,7 +123,7 @@ const Resume = () => {
             <div>
               <div className="flex justify-between items-start mb-1">
                 <h3 className="font-semibold text-gray-900">Enterprise Content Management System</h3>
-                <span className="text-gray-600 text-sm">07/2023 - 11/2023</span>
+                <span className="text-gray-600 text-sm">03/2025 - 04/2025</span>
               </div>
               <ul className="list-disc pl-5 text-gray-600 text-sm space-y-1">
                 <li>Built full-stack CMS using React.js frontend and Spring Boot backend</li>
@@ -136,7 +136,7 @@ const Resume = () => {
             <div>
               <div className="flex justify-between items-start mb-1">
                 <h3 className="font-semibold text-gray-900">Blog Management System</h3>
-                <span className="text-gray-600 text-sm">03/2022 - 06/2022</span>
+                <span className="text-gray-600 text-sm">09/2024 - 11/2024</span>
               </div>
               <ul className="list-disc pl-5 text-gray-600 text-sm space-y-1">
                 <li>Developed full-stack blog platform with Spring MVC, JSP, and MySQL</li>
@@ -158,7 +158,7 @@ const Resume = () => {
               <div>
                 <h3 className="font-semibold text-gray-900">B.Tech in Computer Engineering</h3>
                 <p className="text-gray-600">Bajaj Institute of Technology • GPA: 7.68/10</p>
-                <p className="text-gray-600">2019 - 2023</p>
+                <p className="text-gray-600">2020 - 2024</p>
               </div>
             </div>
             
@@ -168,9 +168,9 @@ const Resume = () => {
                 CERTIFICATIONS
               </h2>
               <ul className="list-disc pl-5 text-gray-600 space-y-1">
-                <li>Java Full Stack Development - Great Learning Academy (01/2024)</li>
-                <li>GATE Qualified - IIT (01/2024)</li>
-                <li>Master Microservices with Spring Boot - Udemy (01/2023)</li>
+                <li>Java Full Stack Development - JSPider, Pune (12/2024)</li>
+                <li>GATE Qualified - IIT (03/2024)</li>
+                <li>Master Microservices with Spring Boot - Udemy (03/2024)</li>
               </ul>
             </div>
           </div>
